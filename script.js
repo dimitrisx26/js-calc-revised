@@ -1,3 +1,7 @@
+function sign(num) {
+    return num
+}
+
 function add(num1, num2) {
     return num1 + num2;
 }
@@ -13,6 +17,9 @@ function multiply(num1, num2) {
 function divide(num1, num2) {
     return num1 / num2;
 }
+function modulo(num1, num2) {
+    return num1 % num2;
+}
 
 function operate(op, num1, num2) {
     if (op === '+') {
@@ -23,6 +30,8 @@ function operate(op, num1, num2) {
         return multiply(num1, num2);
     } else if (op === '/') {
         return divide(num1, num2);
+    } else if (op === '%') {
+        return modulo(num1, num2);
     }
 }
 
