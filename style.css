@@ -42,6 +42,7 @@ body {
     border: 2px solid black;
     display: flex;
     justify-content: flex-end;
+    overflow: auto;
 }
 
 .keys-container {
