@@ -1,6 +1,14 @@
-function sign(num) {
-    return num
-}
+const resultScreen = document.querySelector(".screen");
+const btnClear = document.querySelector(".clear-key");
+const btnNum = document.querySelectorAll(".num-key");
+const btnOp = document.querySelectorAll(".op-key");
+const btnPoint = document.querySelector(".point-key");
+const btnResult = document.querySelector(".result-key");
+
+let op = "";
+let num1 = null;
+let num2 = null;
+let result = null;
 
 function add(num1, num2) {
     return num1 + num2;
@@ -22,6 +30,8 @@ function modulo(num1, num2) {
 }
 
 function operate(op, num1, num2) {
+    Number(num1);
+    Number(num2);
     if (op === '+') {
         return add(num1, num2);
     } else if (op === '-') {
@@ -34,4 +44,37 @@ function operate(op, num1, num2) {
         return modulo(num1, num2);
     }
 }
+
+btnNum.forEach(btn => {
+    btn.addEventListener("click", event => {
+        console.log(btn.innerHTML);
+        num1 = num1 + btn.innerHTML;
+        resultScreen.innerHTML = num1;
+    });
+});
+
+btnOp.forEach(btn => {
+    btn.addEventListener("click", event => {
+        console.log(btn.innerHTML);
+        if(num1 != null && op == "") {
+            op = btn.innerHTML;
+        }
+    });
+});
+
+btnClear.addEventListener("click", event => {
+    console.log(btnClear.innerHTML);
+    console.log(btnResult.innerHTML);
+    num1 = null;
+    num2 = null;
+    op = '';
+    result = null;
+    resultScreen.innerHTML = '0';
+});
+
+btnResult.addEventListener("click", event => {
+    result = operate(op, num1, num2);
+    num1 = result;
+    resultScreen.innerHTML = result;
+});
 
