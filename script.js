@@ -30,7 +30,6 @@ function modulo(num1, num2) {
 }
 
 function operate() {
-    console.log(op, num1, num2);
     if (op === '+') {
         return add(num1, num2);
     } else if (op === '-') {
@@ -68,14 +67,6 @@ function display(num) {
         resultScreen.innerHTML = num2;
     }
 
-    if (result === num1) {
-        const temp = result;
-        clearScreen();
-        num1 = temp;
-        resultScreen.innerHTML = num1;
-    }
-    console.log("op ", op, "num ", num, "num1 ", num1, "num2 ", num2);
-
 }
 
 function clearScreen() {
@@ -83,13 +74,15 @@ function clearScreen() {
     num2 = "";
     op = "";
     result = "";
-    console.log("clear: ", num1, num2, op, result);
     resultScreen.innerHTML = '0';
 }
 
 function calcResult() {
     result = operate();
-    num1 = result;
+    const temp = result;
+    clearScreen();
+    num1 = temp;
+    result = temp;
     resultScreen.innerHTML = result;
 }
 
